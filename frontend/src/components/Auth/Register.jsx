@@ -27,7 +27,7 @@ const Register = () => {
       });
       toast.success('Registration successful! Please login.', {
         position: "top-center",
-        autoClose: 1000, // auto-close after 2 seconds
+        autoClose: 1000, 
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -38,11 +38,11 @@ const Register = () => {
       // Redirect to login page after successful registration
       setTimeout(() => {
         navigate('/login'); // Redirects after a short delay
-      }, 1500); // Delay of 2.5 seconds to allow the toast to finish
+      }, 1500);
     } catch (error) {
       toast.error('Error registering. Please try again.', {
         position: "top-center",
-        autoClose: 3000, // auto-close after 3 seconds
+        autoClose: 3000, 
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

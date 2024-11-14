@@ -40,17 +40,7 @@ exports.deleteService = async (req, res) => {
     }
 };
 
-// Update application status (for admin or staff)
-// exports.updateApplicationStatus = async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const { status } = req.body;
-//         const updatedApplication = await Application.findByIdAndUpdate(id, { status }, { new: true });
-//         res.json(updatedApplication);
-//     } catch (error) {
-//         res.status(500).json({ msg: 'Server Error' });
-//     }
-// };
+
 
 
 

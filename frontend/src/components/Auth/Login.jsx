@@ -23,7 +23,7 @@ const Login = () => {
       // Show success toast
       toast.success('Login successful!', {
         position: "top-center",
-        autoClose: 1000, // Toast auto-close after 2 seconds
+        autoClose: 1000, 
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -37,7 +37,7 @@ const Login = () => {
         if (role === 'admin') navigate('/admin-dashboard');
         else if (role === 'staff') navigate('/staff-dashboard');
         else navigate('/user-dashboard');
-      }, 1000); // 2-second delay to match toast duration
+      }, 1000); 
     } catch (error) {
       console.error('Login error:', error.response || error.message);
       toast.error('Error logging in. Please check your credentials.', {

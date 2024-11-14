@@ -1,27 +1,3 @@
-// const Service = require('../models/Service');
-// const Application = require('../models/Application');
-
-// // View available services
-// exports.getServices = async (req, res) => {
-//     try {
-//         const services = await Service.find();
-//         res.json(services);
-//     } catch (error) {
-//         res.status(500).json({ msg: 'Server Error' });
-//     }
-// };
-
-// // Update application status
-// exports.updateApplicationStatus = async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const { status } = req.body;
-//         const updatedApplication = await Application.findByIdAndUpdate(id, { status }, { new: true });
-//         res.json(updatedApplication);
-//     } catch (error) {
-//         res.status(500).json({ msg: 'Server Error' });
-//     }
-// };
 
 const Application = require('../models/Application');
 const Service = require('../models/Service');

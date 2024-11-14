@@ -12,10 +12,4 @@ router.put('/application/:id/status', auth, roleAuth('admin'), adminController.u
 router.get('/services', auth, roleAuth('admin'), adminController.getServices);
 router.get('/applications', auth, roleAuth('admin'), adminController.getApplications);
 
-
-// router.put('/application/:id/status', auth, roleAuth('staff'), staffController.updateApplicationStatus);
-
-
-
-
 module.exports = router;
