@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ const Register = () => {
     password: '',
     role: 'user', // default role to avoid empty value
   });
+  const navigate = useNavigate(); // Initialize the navigate hook
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,10 +25,31 @@ const Register = () => {
           'Content-Type': 'application/json',
         },
       });
-      alert('Registration successful');
+      toast.success('Registration successful! Please login.', {
+        position: "top-center",
+        autoClose: 1000, // auto-close after 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
+
+      // Redirect to login page after successful registration
+      setTimeout(() => {
+        navigate('/login'); // Redirects after a short delay
+      }, 1500); // Delay of 2.5 seconds to allow the toast to finish
     } catch (error) {
-      alert('Error registering');
-      console.log('Registering error', error);
+      toast.error('Error registering. Please try again.', {
+        position: "top-center",
+        autoClose: 3000, // auto-close after 3 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
+      console.error('Registering error:', error);
     }
   };
 
@@ -70,9 +94,6 @@ const Register = () => {
         <button type="submit" className="bg-green-600 py-1 text-lg rounded-md">
           Register
         </button>
-        <button type="submit" className="bg-blue-600 py-1 text-lg rounded-md">
-          Login
-        </button>
         <p className="text-sm text-center">
           Having an account?{' '}
           <Link to="/login" className="text-green-600 font-semibold">
@@ -80,6 +101,7 @@ const Register = () => {
           </Link>
         </p>
       </form>
+      <ToastContainer />
     </div>
   );
 };

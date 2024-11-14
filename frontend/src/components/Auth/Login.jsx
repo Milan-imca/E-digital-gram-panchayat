@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Updated import
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const navigate = useNavigate(); // Updated hook
+  const navigate = useNavigate();
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -13,22 +14,35 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await api.post('/user/login', formData);
-      console.log("Login Response:", res.data); // Log the response to inspect
+      console.log("Login Response:", res.data);
 
       // Store the token and user details
       localStorage.setItem('token', res.data.token);
-      localStorage.setItem('user', JSON.stringify(res.data.user)); // Save user data
+      localStorage.setItem('user', JSON.stringify(res.data.user));
 
-      toast('Login successful');
+      // Show success toast
+      toast.success('Login successful!', {
+        position: "top-center",
+        autoClose: 1000, // Toast auto-close after 2 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
 
-      // Redirect based on user role
-      const role = res.data.user.role;
-      if (role === 'admin') navigate('/admin-dashboard');
-      else if (role === 'staff') navigate('/staff-dashboard');
-      else navigate('/user-dashboard');
+      // Redirect after a brief delay to ensure toast is visible
+      setTimeout(() => {
+        const role = res.data.user.role;
+        if (role === 'admin') navigate('/admin-dashboard');
+        else if (role === 'staff') navigate('/staff-dashboard');
+        else navigate('/user-dashboard');
+      }, 1000); // 2-second delay to match toast duration
     } catch (error) {
       console.error('Login error:', error.response || error.message);
-      alert('Error logging in');
+      toast.error('Error logging in. Please check your credentials.', {
+        theme: "dark",
+      });
     }
   };
 

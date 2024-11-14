@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 import { FiCheckCircle, FiXCircle, FiClock } from 'react-icons/fi';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import toastify CSS
 
 const StaffDashboard = () => {
@@ -57,6 +57,7 @@ const StaffDashboard = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen p-4 flex flex-col gap-8">
       <h1 className="text-3xl font-bold text-center mb-4">Staff Dashboard</h1>
+      <ToastContainer />
 
       {/* Manage Applications Section */}
       <div className="space-y-6">
