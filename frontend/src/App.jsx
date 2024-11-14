@@ -15,7 +15,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <ToastContainer/>
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path="/login" element={<Login />} />
