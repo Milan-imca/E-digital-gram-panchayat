@@ -1,16 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
-// const auth = require('../middleware/auth');
-// const roleAuth = require('../middleware/roleAuth');
-// const staffController = require('../controllers/staffController');
-
-// // Staff routes
-// router.get('/services', auth, roleAuth('staff'), staffController.getServices);
-// router.put('/application/:id/status', auth, roleAuth('staff'), staffController.updateApplicationStatus);
-
-// module.exports = router;
-
-
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
